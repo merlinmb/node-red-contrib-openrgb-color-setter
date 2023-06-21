@@ -1,0 +1,30 @@
+{
+  "name": "openrgb-color-setter",
+  "version": "0.0.2",
+  "description": "Custom Node-RED node for OpenRGB color setting",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merlinmb/node-red-contrib-openrgb-color-setter.git"
+  },
+  "keywords": [
+    "node-red",
+    "openrgb",
+    "color"
+  ],
+  "author": "Mark Beets",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/merlinmb/node-red-contrib-openrgb-color-setter/issues"
+  },
+  "homepage": "https://github.com/merlinmb/node-red-contrib-openrgb-color-setter#readme",
+  "dependencies": {
+    "net": "^1.0.2",
+    "openrgb-sdk": "^0.5.1",
+    "node-red": "^1.3.0"
+  },
+  "node-red" : {
+    "nodes": {
+         "openrgb-color-setter": "openrgb-color-setter.js"
+     }
+    }
+}

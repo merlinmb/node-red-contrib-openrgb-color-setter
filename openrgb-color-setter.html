@@ -1,0 +1,15 @@
+<script type="text/html" data-template-name="openrgb-color-setter">
+    <div class="form-row">
+        <label for="node-config-device"><i class="fa fa-cogs"></i>Device</label>
+        <select id="node-config-device" class="form-control">
+            <option value="">Select a device...</option>
+            {{#devices}}
+            <option value="{{id}}">{{name}}</option>
+            {{/devices}}
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-config-color"><i class="fa fa-paint-brush"></i>Color</label>
+        <input type="text" id="node-config-color" class="form-control">
+    </div>
+</script>
