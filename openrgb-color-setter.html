@@ -1,6 +1,14 @@
 <script type="text/html" data-template-name="openrgb-color-setter">
     <div class="form-row">
-        <label for="node-config-device"><i class="fa fa-cogs"></i>Device</label>
+        <label for="node-config-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-config-server" class="form-control">
+    </div>
+    <div class="form-row">
+        <label for="node-config-port"><i class="fa fa-plug"></i> Port</label>
+        <input type="text" id="node-config-port" class="form-control">
+    </div>
+    <div class="form-row">
+        <label for="node-config-device"><i class="fa fa-cogs"></i> Device</label>
         <select id="node-config-device" class="form-control">
             <option value="">Select a device...</option>
             {{#devices}}
@@ -9,7 +17,7 @@
         </select>
     </div>
     <div class="form-row">
-        <label for="node-config-color"><i class="fa fa-paint-brush"></i>Color</label>
+        <label for="node-config-color"><i class="fa fa-paint-brush"></i> Color</label>
         <input type="text" id="node-config-color" class="form-control">
     </div>
 </script>
