@@ -1,6 +1,6 @@
 module.exports = function(RED) {
   // Required modules
-  const OpenRGB = require('openrgb-sdk');
+  const OpenRGB = require('openrgb-sdk').default;
 
   // Function to set the color of a device
   function setDeviceColor(server, port, deviceId, color) {
@@ -13,15 +13,17 @@ module.exports = function(RED) {
       .then(() => {
         const device = openRGB.getController(deviceId);
         if (!device) {
-          console.error('Device not found');
+          node.error('Device not found');
           return;
         }
 
         const [r, g, b] = hexToRgb(color);
         device.setColor(0, r, g, b);
+
+        node.log(`Color set to ${color} for device ID ${deviceId}`);
       })
       .catch((error) => {
-        console.error('OpenRGB initialization failed', error);
+        node.error('OpenRGB initialization failed', error);
       });
   }
 
@@ -65,7 +67,10 @@ module.exports = function(RED) {
     const port = req.query.port || '';
 
     // Create an instance of OpenRGB
-    const openRGB = new OpenRGB({server,port});
+    const openRGB = new OpenRGB({
+      server,
+      port
+    });
 
     openRGB.init()
       .then(() => {
@@ -75,10 +80,11 @@ module.exports = function(RED) {
           name: device.name,
         }));
 
+        node.log(`Fetched device list from OpenRGB server: ${devices.length} devices`);
         res.json(devices);
       })
       .catch((error) => {
-        console.error('OpenRGB initialization failed', error);
+        node.error('OpenRGB initialization failed', error);
         res.status(500).send('OpenRGB initialization failed');
       });
   });
